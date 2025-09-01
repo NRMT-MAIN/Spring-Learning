@@ -16,14 +16,36 @@ public class TestRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Test the customer management service
-        Customer cust = new Customer() ;
-        cust.setCname("John Doe");
-        cust.setCaddrs("123 Main St");
-        cust.setBillAmt(100.0f);
+//        Customer cust = new Customer() ;
+//        cust.setCname("John Doe");
+//        cust.setCaddrs("123 Main St");
+//        cust.setBillAmt(100.0f);
+//
+//        String msg = custService.registerCustomer(cust) ; 
+//        System.out.println(msg);
+    	
+//    	try {
+//			System.out.println(custService.showCustomerById(952));
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		}
+    	
+    	
+//    	try {
+//			System.out.println(custService.findCustomerById(952));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
-        String msg = custService.registerCustomer(cust) ; 
-        System.out.println(msg);
-
+    	
+    	
+    	try {
+			System.out.println(custService.fetchCustomerById(9));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
     }
 
+    
 }

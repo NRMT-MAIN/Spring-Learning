@@ -16,16 +16,16 @@ public class SpringdatajpademoApplication {
         //Get service class object
         ICustomerManagementService service = ctx.getBean("custService" , ICustomerManagementService.class) ;
         
-        try {
-            Customer cust = new Customer() ; 
-            cust.setCname("Nirmit Sahu");
-            cust.setCaddrs("Pune") ; 
-            cust.setBillAmt(4545.4f) ; 
-            String resultMsg = service.registerCustomer(cust) ; 
-            System.out.println(resultMsg);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Customer cust = new Customer() ; 
+//            cust.setCname("Nirmit Sahu");
+//            cust.setCaddrs("Pune") ; 
+//            cust.setBillAmt(4545.4f) ; 
+//            String resultMsg = service.registerCustomer(cust) ; 
+//            System.out.println(resultMsg);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         
     }
 }

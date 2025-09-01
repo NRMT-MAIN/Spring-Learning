@@ -2,6 +2,9 @@ package com.example.springdatajpademo.service;
 
 import com.example.springdatajpademo.entitty.Customer;
 import com.example.springdatajpademo.repository.ICustomerRepository;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +22,33 @@ public class CustomerManagementServiceImpl implements ICustomerManagementService
         return "Customer obj is saved (record inserted) having the Id value : " + cust1.getCno() ; 
     }
     
+    @Override
+    public String showCustomerById(int id) {
+	    	Optional<Customer> opt = custRepo.findById(id) ; 
+	    	if(opt.isPresent()) 
+	    		return id+" Customer Details are :: " + opt.get().toString() ; 
+	    	return id+ " Customer Not Found" ; 
+    }
+    
+//    @Override
+//    public Customer findCustomerById(int id) {
+//	    	Optional<Customer> opt = custRepo.findById(id) ; 
+//	    	
+//	    	if(opt.isPresent())
+//	    		return opt.get() ; 
+//	    	else throw new IllegalArgumentException("Customer Not Found!") ; 
+//    }
+    
+    
+    @Override
+    public Customer findCustomerById(int id) {
+    	return custRepo.findById(id)
+    			.orElseThrow(() -> new IllegalArgumentException("Customer Not Found")) ; 
+    }
+
+    @Override
+    public Customer fetchCustomerById(int id) {
+    	return custRepo.findById(id).orElse(new Customer()) ; 
+    }
     
 }
