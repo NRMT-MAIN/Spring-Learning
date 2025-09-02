@@ -7,11 +7,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="JPA_CUSTOMER_TAB")
+@Table(name="JPA_CUSTOMER_TAB1")
 @Data //To get the getter setter method dynamically
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
     @Column(name="CID")
     @Id

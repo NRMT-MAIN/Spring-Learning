@@ -3,6 +3,7 @@ package com.example.springdatajpademo.service;
 import com.example.springdatajpademo.entitty.Customer;
 import com.example.springdatajpademo.repository.ICustomerRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +52,80 @@ public class CustomerManagementServiceImpl implements ICustomerManagementService
     	return custRepo.findById(id).orElse(new Customer()) ; 
     }
     
+    @Override
+    public String adjustCustomerBillAmount(int id, float discountPercentage) {
+    	Optional<Customer> opt = custRepo.findById(id) ; 
+    	
+    	if(opt.isPresent()) {
+    		Customer cust = opt.get() ; 
+    		float discount = cust.getBillAmt() * (discountPercentage / 100.0f) ; 
+    		//set final billAmt to Customer
+    		cust.setBillAmt(cust.getBillAmt() - discount) ; 
+    		custRepo.save(cust) ; 
+    		return id + " Customer details are updated" ; 
+    	}
+    	return id + " Customer not found!";
+    }
+    
+    @Override
+    public String registerAndUpdateCustomer(Customer customer) {
+    	// get the customer detail on the 
+    	Optional<Customer> opt = custRepo.findById(customer.getCno()) ; 
+    	
+    	if(opt.isPresent()) {
+    		custRepo.save(customer) ; 
+    		return customer.getCno() + " id details are updated" ; 
+    	} else { 
+    		int idVal = custRepo.save(customer).getCno() ; 
+    		return "Customer Details are inserted with the id value :: " + idVal ; 
+    	}
+    }
+    
+    @Override
+    public String removeCustomerById(int id) {
+    	Optional<Customer> opt = custRepo.findById(id) ; 
+    	
+    	if(opt.isPresent()) {
+    		custRepo.deleteById(id);
+    		return id + " Customer is found and deleted" ; 
+    	} else {
+    		return id + " Customer is not found and deleted" ; 
+    	}
+    }
+    
+    @Override
+    public String deleteCustomer(Customer customer) {
+    	Optional<Customer> opt = custRepo.findById(customer.getCno()) ; 
+    	
+    	if(opt.isPresent()) {
+    		custRepo.delete(customer);
+    		return "Csutomer found and deleted" ; 
+    	} else {
+    		return "Customer not found and deleted" ; 
+    	}
+    }
+    
+    
+    @Override
+    public String deleteAllCustomer() {
+    	long count = custRepo.count() ; 
+    	if(count > 0) {
+    		custRepo.deleteAll();
+    		return count + " no of customers are deleted" ; 
+    	}
+    	return "No records are found and deleted" ; 
+    	
+    }
+    
+    @Override
+    public String removeAllCustomersById(List<Integer> ids) {
+    	List<Customer> list = (List<Customer>) custRepo.findAllById(ids) ;
+    	
+    	if(ids.size() == list.size()) {
+    		custRepo.deleteAllById(ids);
+    		return ids + "no of records are deleted" ; 
+    	}
+    	return "No records are deleted" ; 
+    	
+    }
 }
