@@ -6,6 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.example.demo.entitty.Customer;
 
-public interface ICustomerRepository extends PagingAndSortingRepository<Customer, Integer> {
+public interface ICustomerRepository extends PagingAndSortingRepository<Customer, Integer>
+ , CrudRepository<Customer , Integer>{
     
 }
