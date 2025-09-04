@@ -3,6 +3,9 @@ package com.example.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entitty.Customer;
@@ -33,5 +36,24 @@ public class CustomerServiceManagementImpl implements ICustomerManagementService
 		
 		Customer cust = custRepo.getReferenceById(id) ; // ---> latest
 		return cust ; 
+	}
+	
+	@Override
+	public List<Customer> showCustomerByExampleData(Customer cust, boolean ascOrder, String... properties) {
+		//Prepare Example Object having the Customer Object
+		Example<Customer> example = Example.of(cust) ; 
+		
+		Sort sort = Sort.by(ascOrder ? Direction.ASC : Direction.DESC , properties) ;
+		
+		List<Customer> list = custRepo.findAll(example , sort) ; 
+		
+		return list ; 
+	}
+	
+	@Override
+	public String groupCustomerRegistration(List<Customer> list) {
+		custRepo.saveAllAndFlush(list) ; 
+		
+		return list.size() + " no. of records are saved!" ; 
 	}
 }

@@ -1,8 +1,6 @@
 package com.example.demo.entitty ;
 
 
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +17,13 @@ import lombok.NonNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer {
-    @Id
+    public Customer(String cname, String cadd, float billAmt) {
+		this.cname = cname ; 
+		this.cadd = cadd ; 
+		this.billAmt = billAmt ; 
+	}
+
+	@Id
     @GeneratedValue(strategy=GenerationType.AUTO) 
     private Integer cid;
 
