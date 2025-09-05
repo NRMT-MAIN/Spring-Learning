@@ -122,8 +122,16 @@ public class JpaRepoRunner implements CommandLineRunner {
 //			e.printStackTrace();
 //		}
 		
+//		try {
+//			System.out.println(custRepo.findByCid(45));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
 		try {
-			System.out.println(custRepo.findByCid(45));
+			//custRepo.getAllCustomer().forEach(System.out::println); ; 
+			
+			custRepo.getCustomerByBillAmountRange(1000.00f , 1200.00f).forEach(System.out::println);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
