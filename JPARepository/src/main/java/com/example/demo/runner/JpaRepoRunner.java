@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 import com.example.demo.entitty.Customer;
 import com.example.demo.repository.ICustomerRepository;
 import com.example.demo.service.ICustomerManagementService;
+import com.example.demo.view.IDynamicResultView1;
+import com.example.demo.view.IDynamicResultView2;
+import com.example.demo.view.IDynamicResultView3;
 
 @Component
 public class JpaRepoRunner implements CommandLineRunner {
@@ -62,12 +65,65 @@ public class JpaRepoRunner implements CommandLineRunner {
 //		}
 		
 		
+//		try {
+//			//custRepo.findByCnameEquals("Ram").forEach(System.out::println); ; 
+//			
+//			//custRepo.findByCaddStartingWith("Hyd").forEach(System.out::println); ; 
+//			
+//			custRepo.findByBillAmtBetween(1000.00f, 1200.00f).forEach(System.out::println); 
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+//		try {
+//			custRepo.findByBillAmtGreaterThanEqualAndBillAmtLessThanEqual(1000.00f, 1200.00f).forEach(System.out::println); ; 
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+//		try {
+////			custRepo.findByCaddInIgnoreCaseOrCnameContainingIgnoreCase(List.of("hyderabad" , "delhi"), "Cust")
+////			.forEach(System.out::println);
+//			
+//			custRepo.findByCaddInIgnoreCaseAndCnameContainingIgnoreCase(List.of("hyderabad" , "delhi"), "Cust")
+//			.forEach(System.out::println);
+//			
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+		
+//		try {
+//			custRepo.findByBillAmtBetween(1000.00f, 1200.00f).forEach(view -> {
+//				System.out.println(view.getCid() + " ---> " + view.getCname());
+//			});
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+//		try {
+//			custRepo.findByCaddIn(List.of("Hyderabad" , "Delhi"), IDynamicResultView1.class).forEach(view1 -> {
+//				System.out.println(view1.getCid() + " ---> " + view1.getCname());
+//			});
+//			
+//			System.out.println("------------------------------------------------------");
+//			
+//			custRepo.findByCaddIn(List.of("Hyderabad" , "Delhi"), IDynamicResultView2.class).forEach(view2 -> {
+//				System.out.println(view2.getCid() + " ---> " + view2.getCname() + " ----> " + view2.getBillAmt());
+//			});
+//			
+//			System.out.println("--------------------------------------------------------");
+//			
+//			custRepo.findByCaddIn(List.of("Hyderabad" , "Delhi"), IDynamicResultView3.class).forEach(view3 -> {
+//				System.out.println(view3.getCname() + " ---> " + view3.getCadd() + " ----> " + view3.getBillAmt());
+//			});
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
 		try {
-			//custRepo.findByCnameEquals("Ram").forEach(System.out::println); ; 
-			
-			//custRepo.findByCaddStartingWith("Hyd").forEach(System.out::println); ; 
-			
-			custRepo.findByBillAmtBetween(1000.00f, 1200.00f).forEach(System.out::println); 
+			System.out.println(custRepo.findByCid(45));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
