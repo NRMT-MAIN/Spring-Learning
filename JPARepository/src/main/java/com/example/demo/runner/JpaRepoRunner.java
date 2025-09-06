@@ -14,7 +14,7 @@ import com.example.demo.view.IDynamicResultView1;
 import com.example.demo.view.IDynamicResultView2;
 import com.example.demo.view.IDynamicResultView3;
 
-@Component
+//@Component
 public class JpaRepoRunner implements CommandLineRunner {
 	@Autowired
 	private ICustomerManagementService custService ; 
@@ -128,12 +128,33 @@ public class JpaRepoRunner implements CommandLineRunner {
 //			e.printStackTrace();
 //		}
 		
-		try {
-			//custRepo.getAllCustomer().forEach(System.out::println); ; 
-			
-			custRepo.getCustomerByBillAmountRange(1000.00f , 1200.00f).forEach(System.out::println);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			//custRepo.getAllCustomer().forEach(System.out::println); ; 
+//			
+//			//custRepo.getCustomerByBillAmountRange(1000.00f , 1200.00f).forEach(System.out::println);
+//			
+////			List<Object[]> list = custRepo.getCustomerData("Customer_34", "Customer_35") ; 
+////			list.forEach(row -> {
+////				for(Object val : row) {
+////					System.out.print(val + "  ") ; 
+////				}
+////				System.out.println();
+////			});
+//			
+////			List<String> list = custRepo.findCustomerAddrsByNameChars("R%") ; 
+////			
+////			list.forEach(addrs -> {
+////				System.out.println(addrs);
+////			});
+////			
+////			System.out.println("--------------------------------");
+////			custRepo.findCustomerAddrsByNameChars("R%").forEach(System.out::println);
+//			
+////			Customer cust = custRepo.findCustomerDataByAddrs("Hyderabad"); 
+////			System.out.println(cust);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//	
+		
 	}
 }
