@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.example.demo.repository.ICustomerRepository;
 
 
-@Component
+//@Component
 public class HQL_NativeSQLQueryTestRunner implements CommandLineRunner {
 	
 	@Autowired
