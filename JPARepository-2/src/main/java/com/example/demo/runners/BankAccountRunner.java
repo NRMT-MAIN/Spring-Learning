@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.example.demo.entity.BankAccount;
 import com.example.demo.service.IBankManagementService;
 
-@Component
+//@Component
 public class BankAccountRunner implements CommandLineRunner {
 	
 	@Autowired
