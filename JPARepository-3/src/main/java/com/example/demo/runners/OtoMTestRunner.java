@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.service.I1toMOperationService;
 
-@Component
+//@Component
 public class OtoMTestRunner implements CommandLineRunner {
 	@Autowired
 	private I1toMOperationService service ; 
