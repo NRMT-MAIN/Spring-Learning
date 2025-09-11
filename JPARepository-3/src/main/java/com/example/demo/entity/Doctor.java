@@ -49,4 +49,9 @@ public class Doctor implements Serializable {
 	public Doctor() {
 		System.out.println("Doctor :: 0 Args Constructor");
 	}
+
+	@Override
+	public String toString() {
+		return "Doctor [did=" + did + ", dname=" + dname + ", specialization=" + specialization + "]";
+	}
 }

@@ -16,6 +16,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -25,6 +26,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class Patient implements Serializable {
 	@Id
 	@SequenceGenerator(name="gen1" ,sequenceName = "pid_seq",  initialValue = 1000 , allocationSize = 1 )
@@ -42,6 +44,11 @@ public class Patient implements Serializable {
 	@NonNull
 	private String problem ; 
 	
+	@Override
+	public String toString() {
+		return "Patient [pid=" + pid + ", pname=" + pname + ", age=" + age + ", problem=" + problem + "]";
+	}
+
 	@ManyToMany(
 		targetEntity = Doctor.class , 
 		fetch = FetchType.LAZY , 

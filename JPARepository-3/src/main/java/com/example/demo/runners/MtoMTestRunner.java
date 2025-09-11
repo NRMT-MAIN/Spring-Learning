@@ -14,7 +14,11 @@ public class MtoMTestRunner implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		service.saveDataUsingDoctor();
+		//service.saveDataUsingDoctor();
+		//service.saveDataUsingPatient();
+		
+		service.LoadDataUsingDoctor();
+		service.LoadDataUsingPatient();
 	}
 
 }
