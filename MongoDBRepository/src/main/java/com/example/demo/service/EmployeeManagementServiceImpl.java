@@ -64,4 +64,17 @@ public class EmployeeManagementServiceImpl implements IEmployeeManagementService
 		return id + " document not found!" ; 
 		
 	}
+	
+	@Override
+	public List<Employee> showEmployeeBySalaryRange(double startSalary, double endSalary) {
+		List<Employee> list = empRepo.findByEsalBetween(startSalary, endSalary) ; 
+		
+		return list;
+	}
+	
+@Override
+	public List<Employee> showEmployeeByEname(String... enames) {
+		// TODO Auto-generated method stub
+		return empRepo.findByEnameIn(enames) ; 
+	}
 }

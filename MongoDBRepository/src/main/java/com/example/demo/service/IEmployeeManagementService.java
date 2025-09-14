@@ -10,4 +10,6 @@ public interface IEmployeeManagementService {
 	public List<Employee> showAllEmployee() ; 
 	public Employee findEmployeeById(String id) ; 
 	public String updateEmployeeById(String id , double newSalary) ; 
+	public List<Employee> showEmployeeBySalaryRange(double startSalary , double endSalary) ; 
+	public List<Employee> showEmployeeByEname(String... enames) ; 
 }

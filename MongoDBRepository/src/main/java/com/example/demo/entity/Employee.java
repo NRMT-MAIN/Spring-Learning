@@ -1,5 +1,10 @@
 package com.example.demo.entity;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,7 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-@Document(collection = "Employee_Info")
+@Document(collection = "Employee_SpecialTypes")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -30,4 +35,17 @@ public class Employee {
 	
 	@NonNull
 	private boolean isVaccinated ; 
+	
+	@NonNull
+	private List<String> friends ; 
+	
+	@NonNull
+	private Set<Long> phoneNumbers ; 
+	
+	@NonNull
+	private Properties idDetails ;
+	
+	@NonNull
+	private Map<Integer , String> insurancePolicies ; 
+	
 }
