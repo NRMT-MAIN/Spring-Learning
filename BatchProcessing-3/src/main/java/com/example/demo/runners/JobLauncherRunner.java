@@ -25,7 +25,5 @@ public class JobLauncherRunner implements CommandLineRunner {
 				.toJobParameters() ; 
 		
 		launcher.run(job, jobParameters) ; 
-
-	}
-	
+	}	
 }
