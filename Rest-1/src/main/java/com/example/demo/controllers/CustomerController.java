@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,4 +30,26 @@ public class CustomerController {
 	        
 	    return new ResponseEntity<>(cust, HttpStatus.OK);
 	}
+	
+	
+	@GetMapping("/report/{no}/{name}")
+    public String fetchData(@PathVariable("name") String cname,
+                            @PathVariable Integer no) {
+    
+        return "Customer No: " + no + "<-----> Name: " + cname;
+    }
+    
+
+    @GetMapping("/report/{no}/name")
+    public String fetchData4(@PathVariable Integer no) {
+        return "from FetchData4 (Static Name Match) for ID: " + no;
+    }
+    
+    @GetMapping(value={"/employee-api/report/{eno}/{ename}", "/employee-api/report/{eno}"})
+    public ResponseEntity<String> showReport2(@PathVariable("eno") String no,
+                                              @PathVariable(required = false) String ename){
+        
+        String result = "Eno: " + no + " ..... Ename: " + (ename == null ? "NULL (Optional)" : ename);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }
