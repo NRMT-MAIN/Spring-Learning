@@ -37,10 +37,8 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 	
 	@Override
 	public Tourist fetchTouristById(Integer tid) throws TouristNotFoundException {
-		Optional<Tourist> opt = touristRepo.findById(tid) ; 
-		
-		if(!opt.isPresent()) throw new TouristNotFoundException("Tourist not present with id :: " + tid) ; 
-		return opt.get();
+		return touristRepo.findById(tid)
+	            .orElseThrow(() -> new TouristNotFoundException("Tourist with ID " + tid + " not found"));
 	}
 	
 	@Override

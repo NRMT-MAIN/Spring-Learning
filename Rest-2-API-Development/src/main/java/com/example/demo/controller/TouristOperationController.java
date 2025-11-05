@@ -51,13 +51,9 @@ public class TouristOperationController {
 	}
 	
 	@GetMapping("/find/{id}")
-	public ResponseEntity<?> getTouristById(@PathVariable Integer id) {
-		try {
+	public ResponseEntity<?> getTouristById(@PathVariable Integer id) throws TouristNotFoundException {
 			Tourist tourist = service.fetchTouristById(id) ; 
-			return new ResponseEntity<>(tourist , HttpStatus.OK) ; 
-		} catch (Exception e) {
-			 return new ResponseEntity<>("Problem in fetching Tourist", HttpStatus.INTERNAL_SERVER_ERROR); // 500
-		}
+			return new ResponseEntity<>(tourist , HttpStatus.OK) ; 		
 	}
 	
 	@PutMapping("/update")
