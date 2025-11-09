@@ -10,21 +10,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.client.BillingServiceConsumerClient;
+import com.example.demo.client.IBillingServiceConsumer;
 
 @RestController
 @RequestMapping("/shopping")
 public class ShoppingServiceOperationController {
 	
-	@Autowired
-	private BillingServiceConsumerClient client ; 
+//	@Autowired
+//	private BillingServiceConsumerClient client ; 
 	
-	@GetMapping("/details")
-    public ResponseEntity<String> showBillingDetails() {
+	@Autowired
+	private IBillingServiceConsumer consumer ; 
+	
+	@GetMapping("details")
+    public String displayShoppingDetails() {
+        String billInfo = consumer.fetchBillDetails();
         
-        String billInfo = "Bill amount::" + new Random().nextInt(100000);
+        System.out.println("Client Comp Class Name (Proxy): " + consumer.getClass());
         
-        String providerResult = client.getBillingInfo();
-        
-        return new ResponseEntity<>(billInfo + "....." + providerResult, HttpStatus.OK);
+        return "Pongal Shopping for Family .... Result from Billing: " + billInfo;
     }
 }

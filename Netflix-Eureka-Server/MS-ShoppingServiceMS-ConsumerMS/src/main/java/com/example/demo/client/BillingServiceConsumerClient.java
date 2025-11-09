@@ -5,23 +5,27 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-@Component
+//@Component
 public class BillingServiceConsumerClient {
 	
+//	@Autowired
+//	private DiscoveryClient client  ;
+	
 	@Autowired
-	private DiscoveryClient client  ;
+	private LoadBalancerClient client ; 
 	
 	public String getBillingInfo() {
-		List<ServiceInstance> lsi = client.getInstances("BillServiceMS") ;
+		ServiceInstance si = client.choose("BillServiceMS") ; 
 		
-		if(lsi == null || lsi.isEmpty()) {
-			return "Error: Billing Service not available in Eureka Registry.";
-		}
+
+	     if (si == null) {
+	         return "Error: Billing Service not available.";
+	     }
 		
-		ServiceInstance si = lsi.get(0) ; 
 		
 		String url = si.getUri() + "/billing-api/info" ; 
 		
