@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/billing-api")
+@Slf4j
 public class BillingOperationServiceController {
 	
 	@Value("${server.port}")
@@ -20,6 +23,7 @@ public class BillingOperationServiceController {
 	
 	@GetMapping("/info")
 	public ResponseEntity<String> showBillingInfo() {
+		log.info("showBillingInfo::Method") ; 
 		String msg = "Final BillAmt=BillAmt - discount (Rs.5000) :: using instance::-->" + instanceid + " @port::" + port;
         return new ResponseEntity<>(msg, HttpStatus.OK);
 	}

@@ -24,7 +24,7 @@ public class ShoppingServiceOperationController {
 	
 	@GetMapping("details")
     public String displayShoppingDetails() {
-        String billInfo = consumer.fetchBillDetails();
+        ResponseEntity<String> billInfo = consumer.fetchBillDetails();
         
         System.out.println("Client Comp Class Name (Proxy): " + consumer.getClass());
         
