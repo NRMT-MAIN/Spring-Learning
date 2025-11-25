@@ -22,7 +22,7 @@ public class ShoppingServiceOperationController {
 	@Autowired
 	private IBillingServiceConsumer consumer ; 
 	
-	@GetMapping("details")
+	@GetMapping("/details")
     public String displayShoppingDetails() {
         ResponseEntity<String> billInfo = consumer.fetchBillDetails();
         
