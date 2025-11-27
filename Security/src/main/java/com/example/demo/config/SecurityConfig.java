@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -28,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.withUser("Nirmit")
 		.password(encoder.encode("Sahu"))
 		.roles(CUSTOMER_ROLE) ;
-		
+
 		auth.inMemoryAuthentication()
 		.withUser("Anshu")
 		.password(encoder.encode("Sahu"))
@@ -43,7 +44,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/balance").hasAnyRole(CUSTOMER_ROLE, MANAGER_ROLE) 
         .antMatchers("/loanApprove").hasRole(MANAGER_ROLE) 
         .anyRequest().authenticated() 
-		.and().httpBasic() 
-        .and().csrf().disable(); 
+		.and().httpBasic()
+        .and().csrf().disable()
+        .rememberMe()
+        .and().sessionManagement()
+            .maximumSessions(2)
+            .maxSessionsPreventsLogin(true) 
+        .and()
+        .and().logout()
+            .logoutRequestMatcher(new AntPathRequestMatcher("/signout")) ; 
 	}
 }
